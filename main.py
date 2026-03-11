@@ -5,7 +5,6 @@ from urllib.parse import urlparse
 
 app = Flask(__name__)
 
-# Подключение к БД
 DATABASE_URL = os.environ.get('DATABASE_URL')
 if DATABASE_URL:
     url = urlparse(DATABASE_URL)
@@ -19,7 +18,6 @@ if DATABASE_URL:
 else:
     conn = None
 
-# Создание таблицы при старте
 if conn:
     with conn.cursor() as cur:
         cur.execute("""
